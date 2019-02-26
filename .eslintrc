@@ -1,0 +1,55 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "jest": true,
+    "jasmine": true
+  },
+  "plugins": ["react", "react-native", "flowtype"],
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "ecmaFeatures": {
+      "experimentalDecorators": true,
+      "jsx": true
+    }
+  },
+  "extends": [],
+  "rules": {
+    "react/prop-types": 0,
+    "max-len": [
+      "error",
+      {
+        "code": 110,
+        "tabWidth": 2,
+        "ignoreUrls": true
+      }
+    ],
+    "comma-dangle": ["error", "never"],
+    "indent": [2, 2, { "SwitchCase": 1 }],
+    "function-paren-newline": ["error", "consistent"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"],
+    "standard/no-callback-literal": "off",
+    "jsx-quotes": ["error", "prefer-single"],
+    "space-before-function-paren": [
+      "error",
+      { "anonymous": "ignore", "named": "never", "asyncArrow": "always" }
+    ],
+    "arrow-parens": ["error", "always"],
+    "import/prefer-default-export": "off",
+    "no-console": 0
+  },
+  "globals": {
+    "fetch": false
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "babel-module": {},
+      "node": {
+        "extensions": [".js", ".android.js", ".ios.js"]
+      }
+    }
+  }
+}
