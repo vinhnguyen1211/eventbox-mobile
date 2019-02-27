@@ -6,25 +6,15 @@ import { queries } from '../../client'
 const HomeScreen = () => (
   <Query query={queries.GET_LOCAL_SESSION}>
     {({ data, loading }) => {
-      const { session } = data
-      if (session && session.me) {
-        const { username, email, role } = session.me
-
-        return (
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Home!</Text>
-            <Text>Username: {username}</Text>
-            <Text>Email: {email}</Text>
-            <Text>Role: {JSON.stringify(role)}</Text>
-          </View>
-        )
-      } else {
-        return (
-          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Home!</Text>
-          </View>
-        )
-      }
+      const { me } = data.session
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Home!</Text>
+          {me && <Text>Username: {me.username}</Text>}
+          {me && <Text>Email: {me.email}</Text>}
+          {me && <Text>Role: {JSON.stringify(me.role)}</Text>}
+        </View>
+      )
     }}
   </Query>
 )
