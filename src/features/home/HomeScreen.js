@@ -1,76 +1,32 @@
 import React from 'react'
-import { View } from 'react-native'
-import styled from 'styled-components'
-import { Button } from 'react-native-elements'
-import routes from '../../navigation/routes'
-import client, { signOut, queries } from '../../client'
+import { View, Text } from 'react-native'
+import { Query } from 'react-apollo'
+import { queries } from '../../client'
 
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Home'
-  }
+const HomeScreen = () => (
+  <Query query={queries.GET_LOCAL_SESSION}>
+    {({ data, loading }) => {
+      const { session } = data
+      if (session && session.me) {
+        const { username, email, role } = session.me
 
-  componentDidMount = async () => {}
-
-  handleLogout = async () => {
-    await signOut()
-    await this.props.refetch()
-  }
-
-  getMe = async () => {
-    const {
-      data: { session }
-    } = await client.query({ query: queries.GET_LOCAL_SESSION })
-    console.log('session: ', session)
-  }
-
-  render() {
-    const {
-      handleLogout,
-      props: {
-        session: { username, email }
+        return (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Home!</Text>
+            <Text>Username: {username}</Text>
+            <Text>Email: {email}</Text>
+            <Text>Role: {JSON.stringify(role)}</Text>
+          </View>
+        )
+      } else {
+        return (
+          <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Home!</Text>
+          </View>
+        )
       }
-    } = this
-
-    return (
-      <StyledView>
-        <UsrText>
-          Username: <BoldText>{username}</BoldText>
-        </UsrText>
-        <UsrText>
-          Email: <BoldText>{email}</BoldText>
-        </UsrText>
-        <View style={{ flex: 1, paddingTop: 30 }}>
-          <ButtonStyled
-            title='MobX Stores'
-            onPress={() => this.props.navigation.navigate(routes.COUNTER_MOBX)}
-          />
-          <ButtonStyled title='Log out' onPress={handleLogout} />
-        </View>
-      </StyledView>
-    )
-  }
-}
-
-const StyledView = styled.View`
-  flex: 1;
-`
-
-const UsrText = styled.Text`
-  font-size: 14px;
-  margin-top: 30px;
-  text-align: center;
-`
-const BoldText = styled.Text`
-  font-weight: 700;
-`
-
-const ButtonStyled = styled(Button)`
-  margin-left: 15px;
-  margin-right: 15px;
-  border-radius: 5px;
-  height: 45px;
-  margin-top: 10px;
-`
+    }}
+  </Query>
+)
 
 export default HomeScreen

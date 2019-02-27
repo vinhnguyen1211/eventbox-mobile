@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Loading from '../components/Loading'
-import client, { queries, mutations } from '../client'
+import client, { queries, mutations } from '../../client'
+import Loading from '../../components/Loading'
 
 class AuthLoadingScreen extends Component {
   componentDidMount = async () => {

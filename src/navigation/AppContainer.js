@@ -1,25 +1,25 @@
+import React from 'react'
 import {
   createSwitchNavigator,
   createStackNavigator,
   createAppContainer,
   createBottomTabNavigator
 } from 'react-navigation'
-import React from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-// import HomeScreen from '../features/home/HomeScreen'
-// import RepoSelectionScreen from '../features/repos/RepoSelectionScreen'
-// import RepoListScreen from '../features/repos/RepoListScreen'
-// import CounterScreen from '../features/mobx/CounterScreen'
-import LoginScreen from '../features/login/LoginScreen'
-// import HomeContainer from '../features/home/HomeContainer'
 import routes from './routes'
-import { HomeScreen, SettingsScreen } from './AppStack'
-import AuthLoadingScreen from './AuthLoadingScreen'
-import HomeIconWithBadge from './IconWithBadge'
+//
+import { AuthLoadingScreen, HomeIconWithBadge } from './components'
+//
+import LoginScreen from '../features/login/LoginScreen'
+//
+import HomeScreen from '../features/home/HomeScreen'
+import SettingsScreen from '../features/settings/SettingsScreen'
+import CounterScreen from '../features/mobx/CounterScreen'
 
 const AppStack = createBottomTabNavigator(
   {
     Home: HomeScreen,
+    MobX: CounterScreen,
     Settings: SettingsScreen
   },
   {
@@ -36,6 +36,8 @@ const AppStack = createBottomTabNavigator(
         } else if (routeName === 'Settings') {
           // iconName = `ios-options${focused ? '' : '-outline'}`
           iconName = 'ios-options'
+        } else if (routeName === 'MobX') {
+          iconName = 'ios-cube'
         }
 
         // You can return any component that you like here!
