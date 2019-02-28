@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { RkText, RkButton, RkStyleSheet } from 'react-native-ui-kitten'
+import Icon from 'react-native-vector-icons/dist/Ionicons'
+import { Dimensions } from 'react-native'
+import { SafeAreaView } from 'react-navigation'
+
+const { width, height } = Dimensions.get('window')
 
 // Home: HomeScreen,
 //     MobX: CounterScreen,
@@ -25,26 +30,29 @@ const routes = [
 
 class TabBarItem extends Component {
   onItemPressed = (item) => {
-    console.log('item', item)
+    console.log('props: ', this.props)
+    this.props.navigation.navigate(item.screen)
   }
 
   render() {
+    const { routeName } = this.props.navigation.state
+
     return (
-      <View>
+      <SafeAreaView style={styles.root}>
         {routes.map((item) => (
           <RkButton
             rkType='tile'
-            style={{ height: 30, width: 50 }}
+            style={{ height: 40, width: width / routes.length, borderColor: 'transparent' }}
             key={item.screen}
             onPress={() => this.onItemPressed(item)}
           >
-            <RkText style={styles.icon} rkType='primary moon xxlarge'>
-              {item.icon}
+            <RkText style={styles.ic} rkType='primary moon xxlarge'>
+              <Icon name={item.icon} size={25} color={`${routeName !== item.screen && 'grey'}`} />
             </RkText>
             <RkText rkType='small'>{item.title}</RkText>
           </RkButton>
         ))}
-      </View>
+      </SafeAreaView>
     )
   }
 }
@@ -53,7 +61,11 @@ export default TabBarItem
 
 const styles = RkStyleSheet.create((theme) => ({
   root: {
-    backgroundColor: theme.colors.screen.base
+    backgroundColor: theme.colors.screen.base,
+    display: 'flex',
+    flexDirection: 'row',
+    borderTop: '1px solid red',
+    paddingTop: 6
   },
   rootContainer: {
     flexDirection: 'row',
