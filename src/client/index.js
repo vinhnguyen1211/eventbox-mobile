@@ -38,15 +38,16 @@ const ws_client = new SubscriptionClient(
 )
 const wsLink = new WebSocketLink(ws_client)
 
-const terminatingLink = split(
-  ({ query }) => {
-    //
-    const { kind, operation } = getMainDefinition(query)
-    return kind === 'OperationDefinition' && operation === 'subscription'
-  },
-  wsLink,
-  httpLink
-)
+// const terminatingLink = split(
+//   ({ query }) => {
+//     //
+//     const { kind, operation } = getMainDefinition(query)
+//     return kind === 'OperationDefinition' && operation === 'subscription'
+//   },
+//   wsLink,
+//   httpLink
+// )
+const terminatingLink = httpLink
 
 /* eslint-disable */
 const authMiddleware = setContext(async (req, { headers = {} }) => {

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { inject, observer } from 'mobx-react'
 import { PrimaryButton } from '../../components/Buttons'
+import { Button } from 'react-native-elements'
 import Card from '../../components/Card'
 
 @inject('stores')
@@ -21,7 +22,7 @@ class CounterScreen extends React.Component {
 
     return (
       <StyledView>
-        <PrimaryButton title='🚀 Up' onPress={this.handleChangeStore} />
+        <ButtonStyled title='🚀 UP' onPress={this.handleChangeStore} />
         <Card>
           <ContentText>
             Counter: <BoldText>{counter}</BoldText>
@@ -50,6 +51,14 @@ const ContentText = styled.Text`
 
 const BoldText = styled.Text`
   font-weight: bold;
+`
+
+const ButtonStyled = styled(Button)`
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 5px;
+  height: 45px;
+  margin-top: 10px;
 `
 
 export default CounterScreen
