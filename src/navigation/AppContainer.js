@@ -15,6 +15,9 @@ import LoginScreen from '../features/login/LoginScreen'
 import HomeScreen from '../features/home/HomeScreen'
 import SettingsScreen from '../features/settings/SettingsScreen'
 import CounterScreen from '../features/mobx/CounterScreen'
+import { View } from 'react-native'
+import { Text } from 'react-native-elements'
+import TabBarItem from './TabBarItem'
 
 const AppStack = createBottomTabNavigator(
   {
@@ -48,6 +51,10 @@ const AppStack = createBottomTabNavigator(
       activeTintColor: 'tomato',
       inactiveTintColor: 'gray'
     }
+    // tabBarComponent: (props) => {
+    //   console.log('props: ', props)
+    //   return <TabBarItem />
+    // }
   }
 )
 const AuthStack = createStackNavigator(

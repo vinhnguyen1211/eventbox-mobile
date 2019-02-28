@@ -7,6 +7,8 @@ import { Provider } from 'mobx-react'
 import AppContainer from './navigation/AppContainer'
 import client from './client'
 import stores from './stores'
+import { bootstrap } from './config/bootstrap'
+bootstrap()
 
 class App extends React.Component {
   state = {
@@ -20,8 +22,7 @@ class App extends React.Component {
         cache: client.cache,
         storage: AsyncStorage,
         key: 'eventbox-app',
-        debug: true,
-        trigger: false
+        debug: true
       })
     } catch (err) {
       console.error('Error attempting to restore the apollo cache', err) // eslint-disable-line
