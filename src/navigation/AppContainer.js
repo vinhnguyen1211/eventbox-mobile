@@ -22,7 +22,8 @@ const AppStack = createBottomTabNavigator(
   {
     Home: HomeScreen,
     MobX: CounterScreen,
-    Settings: ScanScreen
+    Camera: ScanScreen,
+    Settings: SettingsScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -40,6 +41,8 @@ const AppStack = createBottomTabNavigator(
           iconName = 'ios-options'
         } else if (routeName === 'MobX') {
           iconName = 'ios-cube'
+        } else if (routeName === 'Camera') {
+          iconName = 'ios-camera'
         }
 
         // You can return any component that you like here!
