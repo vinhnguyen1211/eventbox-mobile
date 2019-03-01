@@ -16,12 +16,13 @@ import HomeScreen from '../features/home/HomeScreen'
 import SettingsScreen from '../features/settings/SettingsScreen'
 import CounterScreen from '../features/mobx/CounterScreen'
 import TabBarItem from './TabBarItem'
+import ScanScreen from '../features/settings/QRScreen'
 
 const AppStack = createBottomTabNavigator(
   {
     Home: HomeScreen,
     MobX: CounterScreen,
-    Settings: SettingsScreen
+    Settings: ScanScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
