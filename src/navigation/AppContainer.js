@@ -17,13 +17,15 @@ import SettingsScreen from '../features/settings/SettingsScreen'
 import CounterScreen from '../features/mobx/CounterScreen'
 import TabBarItem from './TabBarItem'
 import ScanScreen from '../features/settings/QRScreen'
+import CheckinScreen from '../features/checkin'
 
 const AppStack = createBottomTabNavigator(
   {
     Home: HomeScreen,
-    MobX: CounterScreen,
+    Checkin: CheckinScreen,
     Camera: ScanScreen,
-    Settings: SettingsScreen
+    Settings: SettingsScreen,
+    MobX: CounterScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -43,10 +45,14 @@ const AppStack = createBottomTabNavigator(
           iconName = 'ios-cube'
         } else if (routeName === 'Camera') {
           iconName = 'ios-camera'
+        } else if (routeName === 'Checkin') {
+          iconName = 'ios-contacts'
         }
 
         // You can return any component that you like here!
-        return <IconComponent name={iconName} size={26} color={tintColor} />
+        return (
+          <IconComponent name={iconName} size={28} color={tintColor} style={{ minHeight: 26 }} />
+        )
       }
     }),
     tabBarOptions: {
@@ -57,8 +63,11 @@ const AppStack = createBottomTabNavigator(
         fontSize: 14
       },
       tabStyle: {
-        paddingTop: 8,
+        paddingTop: 5,
         paddingBottom: 2
+      },
+      style: {
+        minHeight: 60
       }
     }
   }

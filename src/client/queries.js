@@ -28,4 +28,24 @@ const GET_LOCAL_SESSION = gql`
   }
 `
 
-export { GET_ME, GET_LOCAL_SESSION }
+const GET_EVENTS_CHECKIN = gql`
+  query {
+    eventsForCheckin {
+      id
+      title
+      images {
+        thumbnail
+      }
+      shortDescription
+      user {
+        id
+        firstname
+        lastname
+        photo
+      }
+      createdAt
+    }
+  }
+`
+
+export { GET_ME, GET_LOCAL_SESSION, GET_EVENTS_CHECKIN }
