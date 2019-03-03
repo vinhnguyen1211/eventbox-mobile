@@ -17,13 +17,24 @@ import SettingsScreen from '../features/settings/SettingsScreen'
 import CounterScreen from '../features/mobx/CounterScreen'
 import TabBarItem from './TabBarItem'
 import ScanScreen from '../features/settings/QRScreen'
-import CheckinScreen from '../features/checkin'
+import EventsCheckin from '../features/checkin'
+import EventsCheckinDetail from '../features/checkin/detail/EventTabView'
+
+const CheckinStack = createStackNavigator(
+  {
+    EventList: EventsCheckin,
+    EventDetail: EventsCheckinDetail
+  },
+  {
+    initialRouteName: 'EventList'
+  }
+)
 
 const AppStack = createBottomTabNavigator(
   {
     Home: HomeScreen,
-    Checkin: CheckinScreen,
-    Camera: ScanScreen,
+    Checkin: { screen: CheckinStack },
+    // Camera: ScanScreen,
     Settings: SettingsScreen,
     MobX: CounterScreen
   },

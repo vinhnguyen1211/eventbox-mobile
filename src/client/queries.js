@@ -48,4 +48,37 @@ const GET_EVENTS_CHECKIN = gql`
   }
 `
 
-export { GET_ME, GET_LOCAL_SESSION, GET_EVENTS_CHECKIN }
+const GET_EVENT_DETAIL = gql`
+  query($eventId: ID!) {
+    event(id: $eventId) {
+      id
+      title
+      description
+      departments {
+        id
+        name
+      }
+      shortDescription
+      images {
+        thumbnail
+      }
+      createdAt
+      organizationName
+      organizationLogo
+      organizationDescription
+      startTime
+      endTime
+      location
+      address
+      user {
+        id
+        firstname
+        lastname
+        photo
+      }
+      status
+    }
+  }
+`
+
+export { GET_ME, GET_LOCAL_SESSION, GET_EVENTS_CHECKIN, GET_EVENT_DETAIL }

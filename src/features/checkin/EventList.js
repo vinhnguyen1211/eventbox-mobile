@@ -24,8 +24,9 @@ class EventList extends Component {
   extractItemKey = (item) => `${item.id}`
 
   onItemPressed = (item) => {
-    // this.props.navigation.navigate('Article', { id: item.id })
     console.log('item: ', item)
+    this.props.navigation.navigate('EventDetail', { id: item.id })
+    // console.log('navigaiton: ', this.props.navigation)
   }
 
   renderItem = ({ item }) => (
