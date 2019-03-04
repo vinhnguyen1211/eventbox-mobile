@@ -5,8 +5,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Text } from 'react-native-elements'
 import EventInfoView from './EvenInfoView'
 import EventScanner from './EventScanner'
+import { SafeAreaView } from 'react-navigation'
 
 export default class EventTabView extends React.Component {
+  static navigationOptions = {
+    header: null
+  }
+
   state = {
     index: 0,
     routes: [
@@ -41,21 +46,26 @@ export default class EventTabView extends React.Component {
     const eventId = navigation.getParam('id', '')
 
     return (
-      <TabView
-        navigationState={this.state}
-        renderScene={SceneMap({
-          event: () => <EventInfoView eventId={eventId} />,
-          scanner: () => <EventScanner eventId={eventId} />
-        })}
-        renderTabBar={this._renderTabBar}
-        onIndexChange={(index) => this.setState({ index })}
-        initialLayout={{ width: Dimensions.get('window').width }}
-      />
+      <SafeAreaView style={styles.container}>
+        <TabView
+          navigationState={this.state}
+          renderScene={SceneMap({
+            event: () => <EventInfoView eventId={eventId} />,
+            scanner: () => <EventScanner eventId={eventId} />
+          })}
+          renderTabBar={this._renderTabBar}
+          onIndexChange={(index) => this.setState({ index })}
+          initialLayout={{ width: Dimensions.get('window').width }}
+        />
+      </SafeAreaView>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
   scene: {
     flex: 1
   },

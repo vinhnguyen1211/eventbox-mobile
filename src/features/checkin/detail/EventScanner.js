@@ -45,7 +45,7 @@ class ScanScreen extends Component {
             onPress={handleShowCamera}
           />
         </View>
-        <View style={{ flex: 4, borderWidth: 1, borderColor: 'red' }}>{this.renderCamera()}</View>
+        <View style={{ flex: 4 }}>{this.renderCamera()}</View>
       </View>
     )
   }

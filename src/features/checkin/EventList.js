@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import client, { queries } from '../../client'
-import { FlatList, View, Image, TouchableOpacity } from 'react-native'
+import { FlatList, View, Image, TouchableOpacity, Text } from 'react-native'
 import { RkCard, RkStyleSheet, RkText } from 'react-native-ui-kitten'
 import { Avatar } from '../../components/avatar'
 
 const moment = require('moment')
 
 class EventList extends Component {
-  static navigationOptions = {
-    title: 'Events'
-  }
-
   state = {
     events: []
   }

@@ -1,6 +1,14 @@
 import React from 'react'
 
-import { ScrollView, Image, View, TouchableOpacity } from 'react-native'
+import {
+  ScrollView,
+  Image,
+  View,
+  TouchableOpacity,
+  Dimensions,
+  PixelRatio,
+  Platform
+} from 'react-native'
 import { RkCard, RkText, RkStyleSheet } from 'react-native-ui-kitten'
 import { Avatar } from '../../../components/avatar'
 import { Query } from 'react-apollo'
@@ -8,6 +16,7 @@ import { queries } from '../../../client'
 import { Text } from 'react-native-elements'
 import HTMLView from 'react-native-htmlview'
 
+const { width, height } = Dimensions.get('window')
 const moment = require('moment')
 
 class EventInfoView extends React.Component {
@@ -22,8 +31,24 @@ class EventInfoView extends React.Component {
     // this.props.navigation.navigate('ProfileV1', { id: this.data.user.id })
   }
 
+  renderNode(node, index, siblings, parent, defaultRenderer) {
+    if (node.name == 'img') {
+      const { src } = node.attribs
+      // const imageHeight = !isNaN(height) ? height : 120
+      return (
+        <Image
+          key={index}
+          style={{ width: width * 0.95, height: width * 0.8 }}
+          source={{ uri: src }}
+          resizeMethod='auto'
+        />
+      )
+    }
+  }
+
   render() {
     const { eventId } = this.props
+    const isAndroid = Platform.OS === 'android'
 
     return (
       <Query query={queries.GET_EVENT_DETAIL} variables={{ eventId }}>
@@ -32,6 +57,7 @@ class EventInfoView extends React.Component {
             return <View />
           }
           const { event } = data
+          const htmlDescription = event.rawHtmlContent.replace(/<(\/)?p>/g, '')
           return (
             <ScrollView style={styles.root}>
               <RkCard rkType='article'>
@@ -52,7 +78,7 @@ class EventInfoView extends React.Component {
                 <View rkCardContent>
                   <View>
                     {/* <RkText rkType='primary3 bigLine'>{event.shortDescription}</RkText> */}
-                    <HTMLView value={event.rawHtmlContent} />
+                    <HTMLView value={htmlDescription} renderNode={this.renderNode} />
                   </View>
                 </View>
                 <View rkCardFooter>

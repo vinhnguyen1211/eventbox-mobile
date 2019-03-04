@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { Component } from 'react'
 import EventList from './EventList'
 
-const EventsCheckinWrapper = (props) => <EventList {...props} />
-
+class EventsCheckinWrapper extends Component {
+  static navigationOptions = {
+    headerTitle: 'My events'
+  }
+  render() {
+    return <EventList {...this.props} />
+  }
+}
 export default EventsCheckinWrapper

@@ -31,14 +31,14 @@ class QrCodeCamera extends Component {
       <QRCodeScanner
         showMarker
         onRead={onSuccess}
-        cameraStyle={{ height: SCREEN_HEIGHT / 2 }}
+        cameraStyle={{ height: SCREEN_HEIGHT - 60 }}
         customMarker={
           <View style={styles.rectangleContainer}>
             <View style={styles.topOverlay}>
-              <Text style={{ fontSize: 30, color: 'white' }}>QR CODE SCANNER</Text>
+              <Text style={{ fontSize: 18, color: 'white' }}>QR CODE SCANNER</Text>
             </View>
 
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row', flex: 5 }}>
               <View style={styles.leftAndRightOverlay} />
 
               <View style={styles.rectangle} />
@@ -71,6 +71,7 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
     backgroundColor: 'transparent'
   },
 
@@ -92,11 +93,12 @@ const styles = {
   },
 
   bottomOverlay: {
-    flex: 1,
+    flex: 2,
     height: SCREEN_WIDTH,
     width: SCREEN_WIDTH,
-    backgroundColor: overlayColor,
-    paddingBottom: SCREEN_WIDTH * 0.25
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   leftAndRightOverlay: {
