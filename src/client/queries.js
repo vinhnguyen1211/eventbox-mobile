@@ -53,21 +53,12 @@ const GET_EVENT_DETAIL = gql`
     event(id: $eventId) {
       id
       title
-      description
-      departments {
-        id
-        name
-      }
+      rawHtmlContent
       shortDescription
       images {
         thumbnail
       }
       createdAt
-      organizationName
-      organizationLogo
-      organizationDescription
-      startTime
-      endTime
       location
       address
       user {

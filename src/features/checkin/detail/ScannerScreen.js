@@ -31,7 +31,7 @@ class QrCodeCamera extends Component {
       <QRCodeScanner
         showMarker
         onRead={onSuccess}
-        cameraStyle={{ height: SCREEN_HEIGHT }}
+        cameraStyle={{ height: SCREEN_HEIGHT / 2 }}
         customMarker={
           <View style={styles.rectangleContainer}>
             <View style={styles.topOverlay}>

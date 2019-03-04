@@ -7,6 +7,10 @@ import { Avatar } from '../../components/avatar'
 const moment = require('moment')
 
 class EventList extends Component {
+  static navigationOptions = {
+    title: 'Events'
+  }
+
   state = {
     events: []
   }
@@ -15,16 +19,16 @@ class EventList extends Component {
     try {
       const { data } = await client.query({ query: queries.GET_EVENTS_CHECKIN })
       this.setState({ events: data.eventsForCheckin })
-      console.log('data: ', data)
+      // console.log('data: ', data)
     } catch (error) {
-      console.log('error: ', error)
+      // console.log('error: ', error)
     }
   }
 
   extractItemKey = (item) => `${item.id}`
 
   onItemPressed = (item) => {
-    console.log('item: ', item)
+    // console.log('item: ', item)
     this.props.navigation.navigate('EventDetail', { id: item.id })
     // console.log('navigaiton: ', this.props.navigation)
   }

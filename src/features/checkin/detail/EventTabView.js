@@ -17,8 +17,8 @@ export default class EventTabView extends React.Component {
 
   componentDidMount = () => {
     const { navigation } = this.props
-    const itemId = navigation.getParam('id', '')
-    console.log('itemId: ', itemId)
+    // const itemId = navigation.getParam('id', '')
+    // console.log('itemId: ', itemId)
   }
 
   _renderIcon = ({ route, color }) => <Ionicons name={route.icon} size={24} color={color} />
@@ -30,6 +30,8 @@ export default class EventTabView extends React.Component {
         indicatorStyle={styles.indicator}
         renderIcon={this._renderIcon}
         style={styles.tabbar}
+        tabStyle={{ flexDirection: 'row' }}
+        getLabelText={({ route }) => route.title}
       />
     )
   }
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   tabbar: {
-    backgroundColor: '#ff9249'
+    backgroundColor: '#f64e59'
   },
   indicator: {
     backgroundColor: '#ffeb3b'

@@ -38,14 +38,14 @@ class ScanScreen extends Component {
     } = this
 
     return (
-      <View style={{ flex: 1, paddingTop: 28 }}>
+      <View style={{ flex: 1 }}>
         <View style={{ flex: 1, padding: 12 }}>
           <Button
             title={shouldShowCamera ? 'Turn off camera' : 'Show camera'}
             onPress={handleShowCamera}
           />
         </View>
-        <View style={{ flex: 3 }}>{this.renderCamera()}</View>
+        <View style={{ flex: 4, borderWidth: 1, borderColor: 'red' }}>{this.renderCamera()}</View>
       </View>
     )
   }
