@@ -29,7 +29,7 @@ const httpLink = createHttpLink({
 })
 //
 // console.log('SERVER_URI_ANDROID: ', SERVER_URI_ANDROID)
-// console.log('SERVER_URI_IOS: ', SERVER_URI_IOS)
+console.log('SERVER_URI_IOS: ', SERVER_URI_IOS)
 
 /* eslint-disable */
 

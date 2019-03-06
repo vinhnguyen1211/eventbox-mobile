@@ -13,11 +13,14 @@ class EventList extends Component {
 
   componentDidMount = async () => {
     try {
-      const { data } = await client.query({ query: queries.GET_EVENTS_CHECKIN })
+      const { data } = await client.query({
+        query: queries.GET_EVENTS_CHECKIN,
+        fetchPolicy: 'network-only'
+      })
       this.setState({ events: data.eventsForCheckin })
-      // console.log('data: ', data)
+      console.log('data: ', data)
     } catch (error) {
-      // console.log('error: ', error)
+      console.log('error: ', error)
     }
   }
 
@@ -30,32 +33,54 @@ class EventList extends Component {
   }
 
   renderItem = ({ item }) => (
+    // <TouchableOpacity
+    //   delayPressIn={70}
+    //   activeOpacity={0.8}
+    //   onPress={() => this.onItemPressed(item)}
+    // >
+    //   <RkCard rkType='blog' style={styles.card}>
+    //     <Image rkCardImg source={{ uri: item.images && item.images.thumbnail }} />
+    //     <View rkCardHeader style={styles.content}>
+    //       <RkText style={styles.section} rkType='header4'>
+    //         {item.title}
+    //       </RkText>
+    //     </View>
+    //     <View rkCardContent>
+    //       <View>
+    //         <RkText rkType='primary3 mediumLine' numberOfLines={2}>
+    //           {item.shortDescription}
+    //         </RkText>
+    //       </View>
+    //     </View>
+    //     <View rkCardFooter>
+    //       <View style={styles.userInfo}>
+    //         <Avatar style={styles.avatar} rkType='circle small' img={{ uri: item.user.photo }} />
+    //         <RkText rkType='header6'>{`${item.user.firstname} ${item.user.lastname}`}</RkText>
+    //       </View>
+    //       <RkText rkType='secondary2 hintColor'>{moment(item.createdAt).fromNow()}</RkText>
+    //     </View>
+    //   </RkCard>
+    // </TouchableOpacity>
     <TouchableOpacity
       delayPressIn={70}
       activeOpacity={0.8}
       onPress={() => this.onItemPressed(item)}
     >
-      <RkCard rkType='blog' style={styles.card}>
+      <RkCard rkType='horizontal' style={styles.card}>
         <Image rkCardImg source={{ uri: item.images && item.images.thumbnail }} />
-        <View rkCardHeader style={styles.content}>
-          <RkText style={styles.section} rkType='header4'>
+        <View rkCardContent>
+          <RkText numberOfLines={1} rkType='header6'>
             {item.title}
           </RkText>
+          <RkText rkType='secondary6 hintColor'>
+            {/* {`${item.user.firstName} ${item.user.lastName}`} */}
+            {moment(item.createdAt).fromNow()}
+          </RkText>
+          <RkText style={styles.post} numberOfLines={2} rkType='secondary1'>
+            {item.shortDescription}
+          </RkText>
         </View>
-        <View rkCardContent>
-          <View>
-            <RkText rkType='primary3 mediumLine' numberOfLines={2}>
-              {item.shortDescription}
-            </RkText>
-          </View>
-        </View>
-        <View rkCardFooter>
-          <View style={styles.userInfo}>
-            <Avatar style={styles.avatar} rkType='circle small' img={{ uri: item.user.photo }} />
-            <RkText rkType='header6'>{`${item.user.firstname} ${item.user.lastname}`}</RkText>
-          </View>
-          <RkText rkType='secondary2 hintColor'>{moment(item.createdAt).fromNow()}</RkText>
-        </View>
+        <View rkCardFooter>{/* <SocialBar rkType='space' showLabel /> */}</View>
       </RkCard>
     </TouchableOpacity>
   )
@@ -80,17 +105,12 @@ const styles = RkStyleSheet.create((theme) => ({
   container: {
     backgroundColor: theme.colors.screen.scroll,
     paddingVertical: 8,
-    paddingHorizontal: 14,
-    paddingTop: 12
+    paddingHorizontal: 14
   },
   card: {
     marginVertical: 8
   },
-  userInfo: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  avatar: {
-    marginRight: 17
+  post: {
+    marginTop: 13
   }
 }))
