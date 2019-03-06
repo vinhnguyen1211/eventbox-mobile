@@ -12,13 +12,26 @@ import { AuthLoadingScreen, HomeIconWithBadge } from './components'
 //
 import LoginScreen from '../features/login/LoginScreen'
 //
-import HomeScreen from '../features/home/HomeScreen'
 import SettingsScreen from '../features/settings/SettingsScreen'
 import CounterScreen from '../features/mobx/CounterScreen'
 import TabBarItem from './TabBarItem'
 import ScanScreen from '../features/settings/QRScreen'
+// Home stack
+import HomeScreen from '../features/home/HomeScreen'
+import HomeEventDetail from '../features/home/EventDetail/EventHomeDetail'
+// Checkin stack
 import EventsCheckin from '../features/checkin'
 import EventsCheckinDetail from '../features/checkin/detail/EventTabView'
+
+const HomeStack = createStackNavigator(
+  {
+    HomeScreen: HomeScreen,
+    HomeEventDetail: HomeEventDetail
+  },
+  {
+    initialRouteName: 'HomeScreen'
+  }
+)
 
 const CheckinStack = createStackNavigator(
   {
@@ -32,11 +45,11 @@ const CheckinStack = createStackNavigator(
 
 const AppStack = createBottomTabNavigator(
   {
-    Home: HomeScreen,
+    Home: { screen: HomeStack },
     Checkin: { screen: CheckinStack },
+    Settings: SettingsScreen
     // Camera: ScanScreen,
-    Settings: SettingsScreen,
-    MobX: CounterScreen
+    // MobX: CounterScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -48,7 +61,7 @@ const AppStack = createBottomTabNavigator(
           iconName = `ios-information-circle${focused ? '' : '-outline'}`
           // Sometimes we want to add badges to some icons.
           // You can check the implementation below.
-          IconComponent = HomeIconWithBadge
+          // IconComponent = HomeIconWithBadge
         } else if (routeName === 'Settings') {
           // iconName = `ios-options${focused ? '' : '-outline'}`
           iconName = 'ios-options'

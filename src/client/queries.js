@@ -28,6 +28,28 @@ const GET_LOCAL_SESSION = gql`
   }
 `
 
+const GET_EVENTS_HOME = gql`
+  query {
+    eventsHome {
+      id
+      title
+      images {
+        thumbnail
+      }
+      shortDescription
+      organizationName
+      organizationLogo
+      user {
+        id
+        firstname
+        lastname
+        photo
+      }
+      createdAt
+    }
+  }
+`
+
 const GET_EVENTS_CHECKIN = gql`
   query {
     eventsForCheckin {
@@ -72,4 +94,4 @@ const GET_EVENT_DETAIL = gql`
   }
 `
 
-export { GET_ME, GET_LOCAL_SESSION, GET_EVENTS_CHECKIN, GET_EVENT_DETAIL }
+export { GET_ME, GET_LOCAL_SESSION, GET_EVENTS_HOME, GET_EVENTS_CHECKIN, GET_EVENT_DETAIL }
