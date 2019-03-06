@@ -28,29 +28,29 @@ const httpLink = createHttpLink({
   uri: Platform.OS === 'android' ? SERVER_URI_ANDROID : SERVER_URI_IOS
 })
 //
-console.log('SERVER_URI_ANDROID: ', SERVER_URI_ANDROID)
-console.log('SERVER_URI_IOS: ', SERVER_URI_IOS)
+// console.log('SERVER_URI_ANDROID: ', SERVER_URI_ANDROID)
+// console.log('SERVER_URI_IOS: ', SERVER_URI_IOS)
 
 /* eslint-disable */
 
-const ws_client = new SubscriptionClient(
-  Platform.OS === 'android' ? SERVER_SUB_ANDROID : SERVER_SUB_IOS,
-  {
-    reconnect: true
-  }
-)
-const wsLink = new WebSocketLink(ws_client)
+// const ws_client = new SubscriptionClient(
+//   Platform.OS === 'android' ? SERVER_SUB_ANDROID : SERVER_SUB_IOS,
+//   {
+//     reconnect: true
+//   }
+// )
+// const wsLink = new WebSocketLink(ws_client)
 
-const terminatingLink = split(
-  ({ query }) => {
-    //
-    const { kind, operation } = getMainDefinition(query)
-    return kind === 'OperationDefinition' && operation === 'subscription'
-  },
-  wsLink,
-  httpLink
-)
-// const terminatingLink = httpLink
+// const terminatingLink = split(
+//   ({ query }) => {
+//     //
+//     const { kind, operation } = getMainDefinition(query)
+//     return kind === 'OperationDefinition' && operation === 'subscription'
+//   },
+//   wsLink,
+//   httpLink
+// )
+const terminatingLink = httpLink
 
 /* eslint-disable */
 const authMiddleware = setContext(async (req, { headers = {} }) => {

@@ -82,7 +82,7 @@ class LoginScreen extends Component {
     return (
       <Mutation
         mutation={mutations.SIGN_IN}
-        variables={{ username, password }}
+        variables={{ username, password, type: 1 }}
         fetchPolicy='no-cache'
       >
         {(signIn, { data, loading, error }) => (
