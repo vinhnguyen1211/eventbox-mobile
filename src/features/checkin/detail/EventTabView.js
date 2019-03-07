@@ -9,7 +9,7 @@ import { SafeAreaView } from 'react-navigation'
 
 export default class EventTabView extends React.Component {
   static navigationOptions = {
-    // header: null
+    title: 'Events'
   }
 
   state = {

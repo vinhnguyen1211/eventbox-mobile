@@ -482,5 +482,5 @@ export const bootstrap = () => {
   RkTheme.registerComponent('RkSwitch', SwitchTypes)
   RkTheme.registerComponent('SocialBar', SocialBarTypes)
 
-  StatusBar.setBarStyle('dark-content', true)
+  // StatusBar.setBarStyle('dark-content', true)
 }

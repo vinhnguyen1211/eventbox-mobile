@@ -3,6 +3,7 @@ import EventList from './EventList'
 
 class EventsCheckinWrapper extends Component {
   static navigationOptions = {
+    headerTitleStyle: { textAlign: 'center', flex: 1 },
     headerTitle: 'My events'
   }
   render() {

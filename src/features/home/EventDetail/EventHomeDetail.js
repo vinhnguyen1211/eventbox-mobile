@@ -23,9 +23,9 @@ class EventHomeDetail extends React.Component {
   static propTypes = {
     // navigation: NavigationType.isRequired
   }
-  // static navigationOptions = {
-  //   title: 'Article View'.toUpperCase()
-  // }
+  static navigationOptions = {
+    title: 'Events'
+  }
 
   onAvatarPressed = () => {
     // this.props.navigation.navigate('ProfileV1', { id: this.data.user.id })
