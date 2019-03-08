@@ -45,11 +45,16 @@ const CheckinStack = createStackNavigator(
 
 const AppStack = createBottomTabNavigator(
   {
-    Home: { screen: HomeStack },
+    Home: {
+      screen: HomeStack,
+      navigationOptions: () => ({
+        title: 'Events'
+      })
+    },
     Checkin: { screen: CheckinStack },
-    Settings: SettingsScreen
+    Settings: SettingsScreen,
     // Camera: ScanScreen,
-    // MobX: CounterScreen
+    MobX: { screen: CounterScreen }
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -58,7 +63,7 @@ const AppStack = createBottomTabNavigator(
         let IconComponent = Ionicons
         let iconName
         if (routeName === 'Home') {
-          iconName = `ios-information-circle${focused ? '' : '-outline'}`
+          iconName = 'ios-images'
           // Sometimes we want to add badges to some icons.
           // You can check the implementation below.
           // IconComponent = HomeIconWithBadge

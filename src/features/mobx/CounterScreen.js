@@ -8,9 +8,9 @@ import Card from '../../components/Card'
 @inject('stores')
 @observer
 class CounterScreen extends React.Component {
-  // static navigationOptions = {
-  //   title: 'MobX Stores'
-  // }
+  static navigationOptions = {
+    title: 'MobX Stores'
+  }
 
   handleChangeStore = () => {
     const { settings } = this.props.stores
