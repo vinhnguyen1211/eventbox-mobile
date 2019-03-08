@@ -94,4 +94,23 @@ const GET_EVENT_DETAIL = gql`
   }
 `
 
-export { GET_ME, GET_LOCAL_SESSION, GET_EVENTS_HOME, GET_EVENTS_CHECKIN, GET_EVENT_DETAIL }
+const GET_TICKET = gql`
+  query($code: String!, $eventId: ID!) {
+    checkTicket(code: $code, eventId: $eventId) {
+      checkedIn
+      checkedInTime
+      userInfo {
+        firstname
+        lastname
+      }
+    }
+  }
+`
+export {
+  GET_ME,
+  GET_LOCAL_SESSION,
+  GET_EVENTS_HOME,
+  GET_EVENTS_CHECKIN,
+  GET_EVENT_DETAIL,
+  GET_TICKET
+}

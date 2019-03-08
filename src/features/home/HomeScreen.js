@@ -23,7 +23,7 @@ class HomeScreen extends Component {
         fetchPolicy: 'network-only'
       })
       this.setState({ events: data.eventsHome })
-      console.log('data: ', data)
+      // console.log('data: ', data)
     } catch (error) {
       console.log('error: ', error)
     }

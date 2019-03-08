@@ -31,16 +31,51 @@ class EventHomeDetail extends React.Component {
     // this.props.navigation.navigate('ProfileV1', { id: this.data.user.id })
   }
 
-  renderNode(node, index, siblings, parent, defaultRenderer) {
+  renderNode = (node, index, siblings, parent, defaultRenderer) => {
     if (node.name == 'img') {
       const { src } = node.attribs
       // const imageHeight = !isNaN(height) ? height : 120
+      // Image.getSize(src, (imgWidth, imgHeight) => {
+      //   // const ratio = height /
+      //   const imgW = width * 0.95
+      //   const imgH = (imgW / imgWidth) * imgHeight
+      //   console.log('imgW imgH: ', { imgW, imgH })
+      //   return <Image key={index} style={{ width: 200, height: 100 }} source={{ uri: src }} />
+      // })
+      const result = () => {
+        return new Promise((resolve) => {
+          Image.getSize(src, (imgWidth, imgHeight) => {
+            // const ratio = height /
+            const imgW = width * 0.95
+            const imgH = (imgW / imgWidth) * imgHeight
+            // console.log('imgW imgH: ', { imgW, imgH })
+            // console.log('current: ', { width: width * 0.95, height: width * 0.8 })
+            resolve({ imgW, imgH })
+          })
+        })
+      }
+      result().then(({ imgW, imgH }) => {
+        // console.log('data: ', { imgW, imgH })
+        // return (
+        // <Image
+        //   key={index}
+        //   style={{ width: width * 0.95, height: width * 0.8 }}
+        //   // style={{ width: width * 0.95, height: width * 0.8 }}
+        //   // style={{ width: 200, height: 100 }}
+        //   source={{ uri: src }}
+        // />
+        // <Image
+        //   key={index}
+        //   style={{ width: width * 0.95, height: width * 0.8 }}
+        //   source={{ uri: src }}
+        // />
+        // )
+      })
       return (
         <Image
           key={index}
           style={{ width: width * 0.95, height: width * 0.8 }}
           source={{ uri: src }}
-          resizeMethod='auto'
         />
       )
     }

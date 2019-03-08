@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Text, TouchableOpacity, Linking } from 'react-native'
+import { View } from 'react-native'
 import ScannerScreen from './ScannerScreen'
 import { withNavigationFocus } from 'react-navigation'
 import { Button } from 'react-native-elements'
@@ -10,18 +10,18 @@ class ScanScreen extends Component {
   }
 
   componentDidMount = () => {
-    console.log('props: ', this.props)
+    // console.log('props: ', this.props)
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    console.log('show: ', this.props.isFocused)
+    // console.log('show: ', this.props.isFocused)
   }
 
   renderCamera() {
     const isFocused = this.props.navigation.isFocused()
     const { shouldShowCamera } = this.state
     if (shouldShowCamera && isFocused) {
-      return <ScannerScreen />
+      return <ScannerScreen eventId={this.props.eventId} />
     } else {
       return null
     }
