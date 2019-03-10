@@ -19,14 +19,13 @@ class QrCodeCamera extends Component {
   onSuccess = async ({ data: code }) => {
     const { eventId } = this.props
     try {
-      console.log('variables: ', { code, eventId })
       const { data } = await client.query({
         query: queries.GET_TICKET,
         variables: { code, eventId },
         fetchPolicy: 'network-only'
       })
       if (data) {
-        console.log('ticket: ', data)
+        // console.log('ticket: ', data)
         const { checkTicket: ticketInfo } = data
         this.setState({ ticketInfo, visiblePopupTicket: true })
       }
@@ -51,7 +50,9 @@ class QrCodeCamera extends Component {
         <QRCodeScanner
           showMarker
           onRead={onSuccess}
-          cameraStyle={{ height: SCREEN_HEIGHT - 60 }}
+          // cameraStyle={{ height: SCREEN_HEIGHT }}
+          reactivate
+          reactivateTimeout={5000}
           customMarker={
             <View style={styles.rectangleContainer}>
               <View style={styles.topOverlay}>
@@ -60,9 +61,7 @@ class QrCodeCamera extends Component {
 
               <View style={{ flexDirection: 'row', flex: 5 }}>
                 <View style={styles.leftAndRightOverlay} />
-
                 <View style={styles.rectangle} />
-
                 <View style={styles.leftAndRightOverlay} />
               </View>
 
@@ -79,14 +78,6 @@ class QrCodeCamera extends Component {
 const overlayColor = 'rgba(0,0,0,0.5)' // this gives us a black color with a 50% transparency
 
 const rectDimensions = SCREEN_WIDTH * 0.65 // this is equivalent to 255 from a 393 device width
-const rectBorderWidth = SCREEN_WIDTH * 0.005 // this is equivalent to 2 from a 393 device width
-const rectBorderColor = 'red'
-
-const scanBarWidth = SCREEN_WIDTH * 0.46 // this is equivalent to 180 from a 393 device width
-const scanBarHeight = SCREEN_WIDTH * 0.0025 //this is equivalent to 1 from a 393 device width
-const scanBarColor = '#22ff00'
-
-const iconScanColor = '#fff'
 
 const styles = {
   rectangleContainer: {
@@ -107,7 +98,6 @@ const styles = {
 
   topOverlay: {
     flex: 1,
-    height: SCREEN_WIDTH,
     width: SCREEN_WIDTH,
     backgroundColor: overlayColor,
     justifyContent: 'center',
@@ -115,24 +105,14 @@ const styles = {
   },
 
   bottomOverlay: {
-    flex: 2,
-    height: SCREEN_WIDTH,
-    width: SCREEN_WIDTH,
-    backgroundColor: 'blue',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-
-  leftAndRightOverlay: {
-    height: SCREEN_WIDTH * 0.65,
+    flex: 1,
     width: SCREEN_WIDTH,
     backgroundColor: overlayColor
   },
 
-  scanBar: {
-    width: scanBarWidth,
-    height: scanBarHeight,
-    backgroundColor: scanBarColor
+  leftAndRightOverlay: {
+    width: SCREEN_WIDTH,
+    backgroundColor: overlayColor
   }
 }
 

@@ -97,9 +97,12 @@ const GET_EVENT_DETAIL = gql`
 const GET_TICKET = gql`
   query($code: String!, $eventId: ID!) {
     checkTicket(code: $code, eventId: $eventId) {
+      code
+      eventId
       checkedIn
       checkedInTime
       userInfo {
+        email
         firstname
         lastname
       }

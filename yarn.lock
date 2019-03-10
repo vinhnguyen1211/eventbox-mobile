@@ -5523,10 +5523,9 @@ react-native-popup-dialog@^0.17.0:
     prop-types "^15.6.0"
     react-native-root-siblings "^3.1.7"
 
-react-native-qrcode-scanner@^1.1.2:
+react-native-qrcode-scanner@legend1250/react-native-qrcode-scanner#master:
   version "1.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-qrcode-scanner/-/react-native-qrcode-scanner-1.1.2.tgz#5b6dfb4efd267a810bedb1f09b7c9ccb6d321e20"
-  integrity sha512-ID/s6za6N1m+V5dgzGZYr+rf9txuTYEnqqkowR8hujm9ddPRJEkXXGkoR6Y18WnpDGS7eDEt2BNPLXFkLLYhvQ==
+  resolved "https://codeload.github.com/legend1250/react-native-qrcode-scanner/tar.gz/c4b8ebf6969dde095ea848b5c074835b555a0310"
   dependencies:
     prop-types "^15.5.10"
     react-native-permissions "^1.1.1"

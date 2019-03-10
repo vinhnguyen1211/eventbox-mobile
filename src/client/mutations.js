@@ -12,3 +12,17 @@ export const SET_LOCAL_SESSION = gql`
     setSession(session: $session) @client
   }
 `
+
+export const TICKET_SUBMIT = gql`
+  mutation($code: String!, $eventId: ID!) {
+    submitTicket(code: $code, eventId: $eventId) {
+      checkedIn
+      checkedInTime
+      userInfo {
+        email
+        firstname
+        lastname
+      }
+    }
+  }
+`
