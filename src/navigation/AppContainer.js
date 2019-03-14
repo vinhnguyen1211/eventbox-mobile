@@ -14,8 +14,6 @@ import LoginScreen from '../features/login/LoginScreen'
 //
 import SettingsScreen from '../features/settings/SettingsScreen'
 import CounterScreen from '../features/mobx/CounterScreen'
-import TabBarItem from './TabBarItem'
-import ScanScreen from '../features/settings/QRScreen'
 // Home stack
 import HomeScreen from '../features/home/HomeScreen'
 import HomeEventDetail from '../features/home/EventDetail/EventHomeDetail'

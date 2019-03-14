@@ -33,34 +33,6 @@ class EventList extends Component {
   }
 
   renderItem = ({ item }) => (
-    // <TouchableOpacity
-    //   delayPressIn={70}
-    //   activeOpacity={0.8}
-    //   onPress={() => this.onItemPressed(item)}
-    // >
-    //   <RkCard rkType='blog' style={styles.card}>
-    //     <Image rkCardImg source={{ uri: item.images && item.images.thumbnail }} />
-    //     <View rkCardHeader style={styles.content}>
-    //       <RkText style={styles.section} rkType='header4'>
-    //         {item.title}
-    //       </RkText>
-    //     </View>
-    //     <View rkCardContent>
-    //       <View>
-    //         <RkText rkType='primary3 mediumLine' numberOfLines={2}>
-    //           {item.shortDescription}
-    //         </RkText>
-    //       </View>
-    //     </View>
-    //     <View rkCardFooter>
-    //       <View style={styles.userInfo}>
-    //         <Avatar style={styles.avatar} rkType='circle small' img={{ uri: item.user.photo }} />
-    //         <RkText rkType='header6'>{`${item.user.firstname} ${item.user.lastname}`}</RkText>
-    //       </View>
-    //       <RkText rkType='secondary2 hintColor'>{moment(item.createdAt).fromNow()}</RkText>
-    //     </View>
-    //   </RkCard>
-    // </TouchableOpacity>
     <TouchableOpacity
       delayPressIn={70}
       activeOpacity={0.8}
