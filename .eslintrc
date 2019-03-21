@@ -26,7 +26,7 @@
     "comma-dangle": ["error", "never"],
     "indent": [2, 2, { "SwitchCase": 1 }],
     "function-paren-newline": ["error", "consistent"],
-    "quotes": ["error", "single"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "semi": ["error", "never"],
     "standard/no-callback-literal": "off",
     "jsx-quotes": ["error", "prefer-single"],

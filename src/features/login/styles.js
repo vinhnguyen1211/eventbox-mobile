@@ -16,7 +16,7 @@ export default {
     flex: 1
   },
   loginFormTextInput: {
-    height: 43,
+    height: 20,
     fontSize: 14,
     borderRadius: 5,
     borderWidth: 1,

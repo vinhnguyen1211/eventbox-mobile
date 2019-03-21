@@ -50,9 +50,9 @@ const AppStack = createBottomTabNavigator(
       })
     },
     Checkin: { screen: CheckinStack },
-    Settings: SettingsScreen,
+    Settings: SettingsScreen
     // Camera: ScanScreen,
-    MobX: { screen: CounterScreen }
+    // MobX: { screen: CounterScreen }
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -104,7 +104,11 @@ const AuthStack = createStackNavigator(
     [routes.LOGIN]: LoginScreen
   },
   {
-    initialRouteName: routes.LOGIN
+    initialRouteName: routes.LOGIN,
+    headerMode: 'none',
+    navigationOptions: {
+      headerVisible: false
+    }
   }
 )
 

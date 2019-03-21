@@ -10,7 +10,7 @@
     "android": "react-native run-android",
     "lint": "eslint . --fix",
     "watchmanclean": "watchman watch-del ./ && watchman watch-project ./",
-    "cleanreactcache": "rm -fr $TMPDIR/react-*",
+    "cleanreactcache": "rm -rf $TMPDIR/react-*",
     "prettier": "prettier --write 'src/**/*.js'"
   },
   "dependencies": {
