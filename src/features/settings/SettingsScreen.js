@@ -1,20 +1,10 @@
 import React, { Component } from 'react'
 import { signOut } from '../../client'
-import {
-  ScrollView,
-  View,
-  TouchableOpacity,
-  StyleSheet
-} from 'react-native'
-import {
-  RkText,
-  RkStyleSheet,
-  RkTheme
-} from 'react-native-ui-kitten'
-import {
-  RkSwitch
-} from '../../components/switch/index.android'
+import { ScrollView, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { RkText, RkStyleSheet, RkTheme } from 'react-native-ui-kitten'
+import { RkSwitch } from '../../components/switch/index.android'
 import { FontAwesome } from '../../../assets/icons'
+import { SafeAreaView } from 'react-navigation'
 
 class SettingsScreen extends Component {
   static navigationOptions = {
@@ -58,66 +48,68 @@ class SettingsScreen extends Component {
     const { handleLogout } = this
 
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.section}>
-          <View style={[styles.row, styles.heading]}>
-            <RkText rkType='primary header6'>PROFILE SETTINGS</RkText>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView style={styles.container}>
+          <View style={styles.section}>
+            <View style={[styles.row, styles.heading]}>
+              <RkText rkType='primary header6'>PROFILE SETTINGS</RkText>
+            </View>
+            <View style={styles.row}>
+              <TouchableOpacity style={styles.rowButton}>
+                <RkText rkType='header6'>Edit Profile</RkText>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.row}>
+              <TouchableOpacity style={styles.rowButton}>
+                <RkText rkType='header6'>Change Password</RkText>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.row}>
+              <RkText rkType='header6'>Send Push Notifications</RkText>
+              <RkSwitch
+                style={styles.switch}
+                value={this.state.sendPush}
+                name='Push'
+                onValueChange={this.onPushNotificationsSettingChanged}
+              />
+            </View>
+            <View style={styles.row}>
+              <RkText rkType='header6'>Refresh Automatically</RkText>
+              <RkSwitch
+                style={styles.switch}
+                value={this.state.shouldRefresh}
+                name='Refresh'
+                onValueChange={this.onRefreshAutomaticallySettingChanged}
+              />
+            </View>
           </View>
-          <View style={styles.row}>
-            <TouchableOpacity style={styles.rowButton}>
-              <RkText rkType='header6'>Edit Profile</RkText>
-            </TouchableOpacity>
+          <View style={styles.section}>
+            <View style={[styles.row, styles.heading]}>
+              <RkText rkType='primary header6'>SUPPORT</RkText>
+            </View>
+            <View style={styles.row}>
+              <TouchableOpacity style={styles.rowButton}>
+                <RkText rkType='header6'>Help</RkText>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.row}>
+              <TouchableOpacity style={styles.rowButton}>
+                <RkText rkType='header6'>Privacy Policy</RkText>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.row}>
+              <TouchableOpacity style={styles.rowButton}>
+                <RkText rkType='header6'>Terms & Conditions</RkText>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.row}>
+              <TouchableOpacity style={styles.rowButton} onPress={handleLogout}>
+                <RkText rkType='header6'>Logout</RkText>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.row}>
-            <TouchableOpacity style={styles.rowButton}>
-              <RkText rkType='header6'>Change Password</RkText>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.row}>
-            <RkText rkType='header6'>Send Push Notifications</RkText>
-            <RkSwitch
-              style={styles.switch}
-              value={this.state.sendPush}
-              name='Push'
-              onValueChange={this.onPushNotificationsSettingChanged}
-            />
-          </View>
-          <View style={styles.row}>
-            <RkText rkType='header6'>Refresh Automatically</RkText>
-            <RkSwitch
-              style={styles.switch}
-              value={this.state.shouldRefresh}
-              name='Refresh'
-              onValueChange={this.onRefreshAutomaticallySettingChanged}
-            />
-          </View>
-        </View>
-        <View style={styles.section}>
-          <View style={[styles.row, styles.heading]}>
-            <RkText rkType='primary header6'>SUPPORT</RkText>
-          </View>
-          <View style={styles.row}>
-            <TouchableOpacity style={styles.rowButton}>
-              <RkText rkType='header6'>Help</RkText>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.row}>
-            <TouchableOpacity style={styles.rowButton}>
-              <RkText rkType='header6'>Privacy Policy</RkText>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.row}>
-            <TouchableOpacity style={styles.rowButton}>
-              <RkText rkType='header6'>Terms & Conditions</RkText>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.row}>
-            <TouchableOpacity style={styles.rowButton} onPress={handleLogout}>
-              <RkText rkType='header6'>Logout</RkText>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     )
   }
 }
