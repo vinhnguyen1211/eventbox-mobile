@@ -56,9 +56,10 @@ class PopupTicket extends Component {
       return (
         <Fragment>
           <Text>
-            Fullname: {ticketInfo.userInfo.lastname} {ticketInfo.userInfo.firstname}
+            Fullname: {ticketInfo.userInfo && ticketInfo.userInfo.lastname}{' '}
+            {ticketInfo.userInfo && ticketInfo.userInfo.firstname}
           </Text>
-          <Text>Email: {ticketInfo.userInfo.email}</Text>
+          <Text>Email: {ticketInfo.userInfo && ticketInfo.userInfo.email}</Text>
         </Fragment>
       )
     } else {

@@ -19,11 +19,16 @@ class LoginScreen extends Component {
 
   onLoginPress = async () => {
     try {
-      const { data: { signIn: { token } } } = await client.mutate({
+      const {
+        data: {
+          signIn: { token }
+        }
+      } = await client.mutate({
         mutation: mutations.SIGN_IN,
         variables: {
           username: this._textInputUsn._lastNativeText,
-          password: this._textInputPwd._lastNativeText
+          password: this._textInputPwd._lastNativeText,
+          type: 1
         },
         fetchPolicy: 'no-cache'
       })
@@ -52,20 +57,19 @@ class LoginScreen extends Component {
     this.props.navigation.navigate('SignUp')
   }
 
+  /* eslint-disable */
   getRandomImageSource = (randomNumber) =>
     randomNumber === 1
       ? require('../../../assets/images/1.png')
       : randomNumber === 2
-        ?  require('../../../assets/images/2.png')
-        : randomNumber === 3
-          ? require('../../../assets/images/3.png')
-          : require('../../../assets/images/4.png')
+      ? require('../../../assets/images/2.png')
+      : randomNumber === 3
+      ? require('../../../assets/images/3.png')
+      : require('../../../assets/images/4.png')
 
   renderImage = () => {
-    const randomNumber = Math.round(Math.random()*4)
-    return  (
-      <Image style={styles.image} source={this.getRandomImageSource(randomNumber)}/>
-    )
+    const randomNumber = Math.round(Math.random() * 4)
+    return <Image style={styles.image} source={this.getRandomImageSource(randomNumber)} />
   }
 
   render() {
@@ -80,18 +84,20 @@ class LoginScreen extends Component {
           colors={['#1d262d', '#16304e', '#6b83aa', '#e7e5e9']}
           style={styles.screenBackground}
         >
-          <View style={styles.header}>
-            {this.renderImage()}
-          </View>
+          <View style={styles.header}>{this.renderImage()}</View>
           <View style={styles.content}>
             <View>
               <TextInput
-                ref={(component) => { this._textInputUsn = component } }
+                ref={(component) => {
+                  this._textInputUsn = component
+                }}
                 style={styles.inputText}
                 placeholder='Username'
               />
               <TextInput
-                ref={(component) => { this._textInputPwd = component } }
+                ref={(component) => {
+                  this._textInputPwd = component
+                }}
                 style={styles.inputText}
                 placeholder='Password'
                 secureTextEntry
@@ -125,7 +131,9 @@ class LoginScreen extends Component {
               <View style={styles.textRow}>
                 <RkText rkType='primary3'>Don’t have an account? </RkText>
                 <RkButton rkType='clear' onPress={this.onSignUpButtonPressed}>
-                  <RkText style={styles.signUpButton} rkType='header6'>Sign up now</RkText>
+                  <RkText style={styles.signUpButton} rkType='header6'>
+                    Sign up now
+                  </RkText>
                 </RkButton>
               </View>
             </View>
