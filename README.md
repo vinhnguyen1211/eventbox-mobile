@@ -4,7 +4,7 @@
 
 # eventbox
 
-**eventbox** is a small sample app written in react-native, which uses Github's GraphQL API as a backend and performs some basic queries and mutations using apollo-client.
+**eventbox** is a small sample app written in react-native, which uses EventBox's GraphQL API as a backend and performs some basic queries and mutations using apollo-client.
 
 ## Tech Stack
 
@@ -37,9 +37,9 @@ This app was developed following the steps in the react-native docs - ["Building
 
 ```
 Environment:
-  Node: 9.4.0
-  Yarn: 1.3.2
-  npm: 5.6.0
+  Node: 8.12.0
+  Yarn: 1.12.3
+  npm: 6.4.1
   Watchman: 4.9.0
   Xcode: 9.2/9C40b - /usr/bin/xcodebuild
   Android Studio: 3.2 AI-181.5540.7.32.5056338
@@ -47,12 +47,13 @@ Environment:
 
 ## Getting Started
 
-To communicate with the GraphQL server, you'll need an OAuth token with the right scopes. Follow the steps in ["Creating a personal access token for the command line"](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) to create a token. After getting a token, follow these steps to start the app:
+To communicate with the GraphQL server, follow the steps in ["Creating a GraphQL Eventbox Server](https://github.com/legend1250/eventbox-dashboard). After creating a server, follow these steps to start the app:
 
 ```
 $ git clone https://github.com/legend1250/eventbox-mobile.git
 $ cd eventbox && touch .env
-$ echo "GITHUB_TOKEN=<your token here>" > .env
+$ echo "SERVER_URI_IOS=https://192.168.1.246:8000/graphql" > .env
+$ echo "SERVER_URI_ANDROID=https://192.168.1.246:8000/graphql" > .env
 $ yarn install
 $ yarn ios OR yarn android
 ```
@@ -70,3 +71,4 @@ $ yarn ios OR yarn android
 ![Screen 2](assets/screenshots/screen2.png)
 ![Screen 3](assets/screenshots/screen3.png)
 ![Screen 4](assets/screenshots/screen4.png)
+![Screen 5](assets/screenshots/screen5.png)
