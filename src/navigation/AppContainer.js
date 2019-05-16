@@ -14,6 +14,9 @@ import LoginScreen from '../features/login/LoginScreen'
 //
 import SettingsScreen from '../features/settings/SettingsScreen'
 import CounterScreen from '../features/mobx/CounterScreen'
+//
+import TicketScreen from '../features/tickets/TicketScreen'
+import TicketInfo from '../features/tickets/TicketInfo'
 // Home stack
 import HomeScreen from '../features/home/HomeScreen'
 import HomeEventDetail from '../features/home/EventDetail/EventHomeDetail'
@@ -41,6 +44,16 @@ const CheckinStack = createStackNavigator(
   }
 )
 
+const TicketStack = createStackNavigator(
+  {
+    TicketList: TicketScreen,
+    TicketInfo: TicketInfo
+  },
+  {
+    initialRouteName: 'TicketList'
+  }
+)
+
 const AppStack = createBottomTabNavigator(
   {
     Home: {
@@ -50,6 +63,7 @@ const AppStack = createBottomTabNavigator(
       })
     },
     Checkin: { screen: CheckinStack },
+    Tickets: { screen: TicketStack },
     Settings: SettingsScreen
     // Camera: ScanScreen,
     // MobX: { screen: CounterScreen }
@@ -74,6 +88,8 @@ const AppStack = createBottomTabNavigator(
           iconName = 'ios-camera'
         } else if (routeName === 'Checkin') {
           iconName = 'ios-contacts'
+        } else if (routeName === 'Tickets') {
+          iconName = 'ios-barcode'
         }
 
         // You can return any component that you like here!

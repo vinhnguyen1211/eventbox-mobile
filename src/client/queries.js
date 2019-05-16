@@ -109,11 +109,31 @@ const GET_TICKET = gql`
     }
   }
 `
+
+const MY_TICKETS = gql`
+  query($limit: Int) {
+    myTickets(limit: $limit) {
+      code
+      ticketSvgSrc
+      checkedIn
+      checkedInTime
+      eventInfo {
+        title
+        images {
+          thumbnail
+        }
+      }
+      createdAt
+    }
+  }
+`
+
 export {
   GET_ME,
   GET_LOCAL_SESSION,
   GET_EVENTS_HOME,
   GET_EVENTS_CHECKIN,
   GET_EVENT_DETAIL,
-  GET_TICKET
+  GET_TICKET,
+  MY_TICKETS
 }

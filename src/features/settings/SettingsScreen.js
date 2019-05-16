@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-navigation'
 
 class SettingsScreen extends Component {
   static navigationOptions = {
-    title: 'Settings'.toUpperCase()
+    title: 'Settings'
   }
 
   state = {
