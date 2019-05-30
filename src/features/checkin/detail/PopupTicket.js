@@ -52,13 +52,10 @@ class PopupTicket extends Component {
 
   renderTicketInfo = () => {
     const { ticketInfo } = this.props
-    if (ticketInfo && ticketInfo !== null) {
+    if (ticketInfo) {
       return (
         <Fragment>
-          <Text>
-            Fullname: {ticketInfo.userInfo && ticketInfo.userInfo.lastname}{' '}
-            {ticketInfo.userInfo && ticketInfo.userInfo.firstname}
-          </Text>
+          <Text>Fullname: {ticketInfo.fullName}</Text>
           <Text>Email: {ticketInfo.userInfo && ticketInfo.userInfo.email}</Text>
         </Fragment>
       )
@@ -69,7 +66,7 @@ class PopupTicket extends Component {
 
   renderTicketStatus = () => {
     const { ticketInfo } = this.props
-    if (ticketInfo && ticketInfo !== null) {
+    if (ticketInfo) {
       if (ticketInfo.checkedIn) {
         return (
           <Text style={{ color: '#f5222d' }}>

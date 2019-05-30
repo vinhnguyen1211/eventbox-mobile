@@ -28,7 +28,7 @@ class EventList extends Component {
 
   onItemPressed = (item) => {
     // console.log('item: ', item)
-    this.props.navigation.navigate('EventDetail', { id: item.id })
+    this.props.navigation.navigate('EventDetail', { id: item.id, endTime: item.endTime })
     // console.log('navigaiton: ', this.props.navigation)
   }
 

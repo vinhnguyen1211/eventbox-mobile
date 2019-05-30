@@ -65,6 +65,7 @@ const GET_EVENTS_CHECKIN = gql`
         lastname
         photo
       }
+      endTime
       createdAt
     }
   }
@@ -98,6 +99,7 @@ const GET_TICKET = gql`
   query($code: String!, $eventId: ID!) {
     checkTicket(code: $code, eventId: $eventId) {
       code
+      fullName
       eventId
       checkedIn
       checkedInTime

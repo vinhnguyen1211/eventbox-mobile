@@ -81,10 +81,9 @@ class EventInfoView extends React.Component {
                     <HTMLView value={htmlDescription} renderNode={this.renderNode} />
                   </View>
                 </View>
-                <View rkCardFooter>
-                  {/* <SocialBar /> */}
+                {/* <View rkCardFooter>
                   <Text>Footer</Text>
-                </View>
+                </View> */}
               </RkCard>
             </ScrollView>
           )

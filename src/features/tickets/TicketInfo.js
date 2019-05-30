@@ -8,21 +8,25 @@ const moment = require('moment')
 const { width } = Dimensions.get('window')
 
 class TicketInfo extends Component {
+  static navigationOptions = {
+    title: 'Tickets'
+  }
+
   render() {
     const { navigation } = this.props
     const ticketInfo = navigation.getParam('ticket', {})
-    console.log('ticketInfo: ', ticketInfo)
+    // console.log('ticketInfo: ', ticketInfo)
 
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ flex: 3, padding: 24 }}>
+        <View style={{ padding: 24 }}>
           <SvgUri
             width={width - 48}
             height={width - 48}
             source={{ uri: ticketInfo.ticketSvgSrc }}
           />
         </View>
-        <View style={{ flex: 2, padding: 12, fontSize: 16 }}>
+        <View style={{ padding: 12 }}>
           <Text style={[styles.largeText, styles.paddingText]}>
             <Text style={{ color: '#77797A' }}>
               Code: <Text style={{ fontSize: 14, color: '#404142' }}>{ticketInfo.code}</Text>

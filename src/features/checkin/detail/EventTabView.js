@@ -44,6 +44,7 @@ export default class EventTabView extends React.Component {
   render() {
     const { navigation } = this.props
     const eventId = navigation.getParam('id', '')
+    const endTime = navigation.getParam('endTime', '')
 
     return (
       <SafeAreaView style={styles.container}>
@@ -51,7 +52,7 @@ export default class EventTabView extends React.Component {
           navigationState={this.state}
           renderScene={SceneMap({
             event: () => <EventInfoView eventId={eventId} />,
-            scanner: () => <EventScanner eventId={eventId} />
+            scanner: () => <EventScanner eventId={eventId} endTime={endTime} />
           })}
           renderTabBar={this._renderTabBar}
           onIndexChange={(index) => this.setState({ index })}
